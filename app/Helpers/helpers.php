@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\ArrayX;
+use App\ArrayX;
 
 function array_get($array, $key, $default = null)
 {
