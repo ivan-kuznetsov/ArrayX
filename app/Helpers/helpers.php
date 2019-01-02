@@ -36,3 +36,28 @@ function array_forget(&$array, $keys)
 {
     ArrayX::forget($array, $keys);
 }
+
+function array_first_min($array)
+{
+    return ArrayX::firstMin($array);
+}
+
+function array_first_max($array)
+{
+    return ArrayX::firstMin($array);
+}
+
+function array_min($array, $n = 1)
+{
+    return ArrayX::min($array, $n);
+}
+
+function array_max($array, $n = 1)
+{
+    return ArrayX::max($array, $n);
+}
+
+function array_reverse_x($array)
+{
+    return ArrayX::reverse($array);
+}

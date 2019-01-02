@@ -148,4 +148,69 @@ class ArrayX
 
         }
     }
+
+    static public function firstMin($array)
+    {
+        $current = static::first($array);
+
+        foreach ($array as $item) {
+            if ($item < $current) {
+                $current = $item;
+            }
+        }
+
+        return $current;
+    }
+
+    static public function min($array, $n = 1)
+    {
+        if ($n > count($array) || !static::accessible($array)) {
+            return false;
+        }
+
+        for ($i = 1; $i < $n; $i++) {
+            $array = array_diff($array, [static::firstMin($array)]);
+        }
+
+        return static::firstMin($array);
+
+    }
+
+    static public function firstMax($array)
+    {
+        $current = static::first($array);
+
+        foreach ($array as $item) {
+            if ($item > $current) {
+                $current = $item;
+            }
+        }
+
+        return $current;
+    }
+
+    static public function max($array, $n = 1)
+    {
+        if ($n > count($array) || !static::accessible($array)) {
+            return false;
+        }
+
+        for ($i = 1; $i < $n; $i++) {
+            $array = array_diff($array, [static::firstMax($array)]);
+        }
+
+        return static::firstMax($array);
+
+    }
+
+    static public function reverse($array)
+    {
+        $reversed = null;
+
+        for ($i = count($array); $i >= 0; $i--) {
+            $reversed[] = $array[$i];
+        }
+
+        return $reversed;
+    }
 }
