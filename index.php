@@ -22,7 +22,7 @@ $users = [
   ['name' => 'Mikhail', 'score' => 20],
 ];
 
-array_walk_recursive($array, function (&$item) {
-    $item = is_numeric($item) ? (int)$item : $item;
-});
+$numbers = range(rand(1, 10), rand(11, 16));
+
+var_dump($numbers, array_max($numbers, 4));
 
