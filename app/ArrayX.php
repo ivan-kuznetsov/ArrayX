@@ -1,9 +1,23 @@
 <?php
 
-namespace App\Helpers;
+namespace App;
 
 class ArrayX
 {
+    public static function accessible($value)
+    {
+        return is_array($value) || $value instanceof \ArrayAccess;
+    }
+
+    public static function exists($array, $key)
+    {
+        if ($array instanceof \ArrayAccess) {
+            return $array->offsetExists($key);
+        }
+
+        return array_key_exists($key, $array);
+    }
+
     public static function get($array, $key, $default = null)
     {
         if (!static::accessible($array)) {
@@ -29,33 +43,6 @@ class ArrayX
         return $array;
     }
 
-    public static function accessible($value)
-    {
-        return is_array($value) || $value instanceof \ArrayAccess;
-    }
-
-    public static function exists($array, $key)
-    {
-        if ($array instanceof \ArrayAccess) {
-            return $array->offsetExists($key);
-        }
-
-        return array_key_exists($key, $array);
-    }
-
-    public static function last($array, callable $callback = null, $default = null)
-    {
-        if ($callback === null) {
-            if (empty($array)) {
-                return $default;
-            }
-
-            return end($array);
-        }
-
-        return static::first(array_reverse($array, true), $callback, $default);
-    }
-
     public static function first($array, callable $callback = null, $default = null)
     {
         if ($callback === null) {
@@ -75,6 +62,19 @@ class ArrayX
         }
 
         return $default;
+    }
+
+    public static function last($array, callable $callback = null, $default = null)
+    {
+        if ($callback === null) {
+            if (empty($array)) {
+                return $default;
+            }
+
+            return end($array);
+        }
+
+        return static::first(array_reverse($array, true), $callback, $default);
     }
 
     public static function has($array, $key)
