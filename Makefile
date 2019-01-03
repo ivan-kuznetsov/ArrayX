@@ -31,3 +31,4 @@ watch:
 
 unit:
 	$(docker_compose) exec "$(PHP_CLI_CONTAINER_NAME)" composer tests
+

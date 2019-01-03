@@ -162,6 +162,19 @@ class ArrayX
         return $current;
     }
 
+    static public function firstMax($array)
+    {
+        $current = static::first($array);
+
+        foreach ($array as $item) {
+            if ($item > $current) {
+                $current = $item;
+            }
+        }
+
+        return $current;
+    }
+
     static public function min($array, $n = 1)
     {
         if ($n > count($array) || !static::accessible($array)) {
@@ -174,19 +187,6 @@ class ArrayX
 
         return static::firstMin($array);
 
-    }
-
-    static public function firstMax($array)
-    {
-        $current = static::first($array);
-
-        foreach ($array as $item) {
-            if ($item > $current) {
-                $current = $item;
-            }
-        }
-
-        return $current;
     }
 
     static public function max($array, $n = 1)
@@ -212,5 +212,65 @@ class ArrayX
         }
 
         return $reversed;
+    }
+
+    static public function bubbleSorting(array $array)
+    {
+        for ($i = 0; $i < count($array) - 1; $i++) {
+            $changed = false;
+            for ($j = 0; $j < count($array) - 1; $j++) {
+                if ($array[$j] > $array[$j + 1]) {
+                    $tmp = $array[$j + 1];
+                    $array[$j + 1] = $array[$j];
+                    $array[$j] = $tmp;
+                    $changed = true;
+                }
+            }
+
+            if (!$changed) {
+                break;
+            }
+        }
+
+        return $array;
+    }
+
+    /**
+     * Сначала заводим переменную ящичек в который
+     * можно положить число
+     */
+    static public function insertionSorting(array $array)
+    {
+        //Заводим ящичек
+        $x;
+
+        // Создаем цикл и говорим что мы будем проходить
+        // массив не от первого элемента, а от второго это
+        // можно представить как карты в колоде
+        // при заходе в цикл мы сохраняем в наш ящичек
+        // первую карту из колоды, при этом можно
+        // представить что первый элемент мы уже
+        // держим в руке
+
+        for ($i = 1; $i < count($array); $i++) {
+            $x = $array[$i];
+
+            //Далее мы вычислим индекс
+            //предыдущего элемента (на первый раз
+            //это будет элемент
+            //который у нас в руке)
+
+            $j = $i - 1;
+
+            //пока та карта которая у нас в руке
+            // меньше той карты которую
+            // мы только что вытянули
+            while ($x < $array[$j]) {
+
+            }
+
+
+        }
+
     }
 }

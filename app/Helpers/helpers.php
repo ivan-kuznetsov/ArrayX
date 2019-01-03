@@ -2,62 +2,67 @@
 
 use App\ArrayX;
 
-function array_get($array, $key, $default = null)
+function arrayX_get($array, $key, $default = null)
 {
     return ArrayX::get($array, $key, $default);
 }
 
-function array_first($array, callable $callback = null, $default = null)
+function arrayX_first($array, callable $callback = null, $default = null)
 {
     return ArrayX::first($array, $callback, $default);
 }
 
-function array_last($array, callable $callback = null, $default = null)
+function arrayX_last($array, callable $callback = null, $default = null)
 {
     return ArrayX::last($array, $callback, $default);
 }
 
-function array_has($array, $key)
+function arrayX_has($array, $key)
 {
     return ArrayX::has($array, $key);
 }
 
-function array_where($array, callable $callback = null)
+function arrayX_where($array, callable $callback = null)
 {
     return ArrayX::where($array, $callback);
 }
 
-function array_only($array, $keys)
+function arrayX_only($array, $keys)
 {
     return ArrayX::only($array, $keys);
 }
 
-function array_forget(&$array, $keys)
+function arrayX_forget(&$array, $keys)
 {
     ArrayX::forget($array, $keys);
 }
 
-function array_first_min($array)
+function arrayX_first_min($array)
 {
     return ArrayX::firstMin($array);
 }
 
-function array_first_max($array)
+function arrayX_first_max($array)
 {
     return ArrayX::firstMin($array);
 }
 
-function array_min($array, $n = 1)
+function arrayX_min($array, $n = 1)
 {
     return ArrayX::min($array, $n);
 }
 
-function array_max($array, $n = 1)
+function arrayX_max($array, $n = 1)
 {
     return ArrayX::max($array, $n);
 }
 
-function array_reverse_x($array)
+function arrayX_reverse($array)
 {
     return ArrayX::reverse($array);
+}
+
+function arrayX_sort($array)
+{
+    return ArrayX::bubbleSorting($array);
 }

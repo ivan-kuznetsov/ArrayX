@@ -73,8 +73,25 @@ class ArrayXTest extends TestCase
         $this->assertSame('default', ArrayX::get($a, 'keys', 'default'));
     }
 
-    public function test_that_we_can_not_get_dotted_value()
+    public function test_that_we_can_get_dotted_value()
     {
-        $this->markTestIncomplete('This test has not been implemented yet.');
+        $a = [
+          'level1' => [
+            'level21' => 'key1',
+            'level22' => 'key2'
+          ]
+        ];
+
+        $this->assertSame('key2', ArrayX::get($a, 'level1.level22'));
+    }
+
+    public function test_that_we_sort_array_by_bubble_sorting()
+    {
+        $mySorting = ArrayX::bubbleSorting($this->randomArray);
+
+        $standartSorting = $this->randomArray;
+        sort($standartSorting);
+
+        $this->assertSame($standartSorting, $mySorting);
     }
 }
